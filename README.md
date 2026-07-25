@@ -12,7 +12,7 @@ An AI-powered interview preparation platform built using Spring Boot and React.
 ## Features
 
 - User Registration
-- Login (Coming Soon)
+- Login Authentication
 - AI Interview Generation (Coming Soon)
 - JWT Authentication (Coming Soon)
 
