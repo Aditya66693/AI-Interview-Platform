@@ -1,6 +1,7 @@
 package com.aditya.aiinterviewplatform.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.aditya.aiinterviewplatform.dto.LoginRequest;
@@ -12,7 +13,10 @@ import com.aditya.aiinterviewplatform.repository.UserRepository;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+private UserRepository userRepository;
+
+@Autowired
+private PasswordEncoder passwordEncoder;
 
     public String registerUser(SignupRequest request) {
 
@@ -26,7 +30,7 @@ public class UserService {
 
     user.setName(request.getName());
     user.setEmail(request.getEmail());
-    user.setPassword(request.getPassword());
+    user.setPassword(passwordEncoder.encode(request.getPassword()));
 
     userRepository.save(user);
 
@@ -41,10 +45,10 @@ public class UserService {
             return "User not found!";
         }
 
-        if (user.getPassword().equals(request.getPassword())) {
-            return "Login Successful!";
-        } else {
-            return "Invalid Password!";
-        }
+      if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+    return "Login Successful!";
+}   else {
+    return "Invalid Password!";
+}
     }
 }
