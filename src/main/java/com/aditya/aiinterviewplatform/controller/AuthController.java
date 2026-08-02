@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aditya.aiinterviewplatform.dto.LoginRequest;
 import com.aditya.aiinterviewplatform.dto.SignupRequest;
 import com.aditya.aiinterviewplatform.service.UserService;
 
@@ -21,5 +22,10 @@ public class AuthController {
     @PostMapping("/register")
     public String register(@RequestBody SignupRequest request) {
         return userService.registerUser(request);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request) {
+        return userService.loginUser(request);
     }
 }
