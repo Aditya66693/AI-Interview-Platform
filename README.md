@@ -4,7 +4,7 @@ An AI-powered interview preparation platform built using Spring Boot and React.
 
 ## Tech Stack
 
-- Java 24
+- Java 25
 - Spring Boot
 - Maven
 - REST API
